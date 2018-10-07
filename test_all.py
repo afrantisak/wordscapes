@@ -20,11 +20,11 @@ def test_only_allowed_once():
     assert find_all.only_allowed_once('feet', 'eetf') == True
 
 
-# def test_filter_no_repeat():
-#     words_list = ['feet', 'eft']
-#     results = find_all.letter_filter(words_list, 'fet')
-#     expected = ['eft']
-#     assert results == expected
+def test_filter_no_repeat():
+    words_list = ['feet', 'eft']
+    results = find_all.letter_filter(words_list, 'fet')
+    expected = ['eft']
+    assert results == expected
 
 
 def test_cheat():

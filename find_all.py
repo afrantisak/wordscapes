@@ -43,12 +43,6 @@ def only_allowed_once(word, original_allowed_letters):
 
 
 def letter_filter(words_list, allowed_letters):
-    # length = len(words_list[0])
-    # words = '\n' + '\n'.join(words_list) + '\n'
-    # query_string = r'[' + allowed_letters + r']{' + str(length) + '}'
-    # expression = re.compile(query_string)
-    # matches = re.findall(expression, words)
-    # return [match.strip() for match in matches]
     return [word for word in words_list if only_allowed_once(word, allowed_letters)]
 
 
@@ -59,13 +53,16 @@ def cheat(query_string, allowed_letters, words):
 
 def main():
     words_string = load_words_string()
-    print("allowed_letters: ")
-    allowed_letters = input()
     while(True):
-        print("query_string: ")
-        query_string = input()
-        results = cheat(query_string, allowed_letters, words_string)
-        print(results)
+        print("allowed_letters: ")
+        allowed_letters = input()
+        while(True):
+            print("query_string: ")
+            query_string = input()
+            if len(query_string) == 0:
+                break
+            results = cheat(query_string, allowed_letters, words_string)
+            print(results)
 
 
 if __name__ == '__main__':
