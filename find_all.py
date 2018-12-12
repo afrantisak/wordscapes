@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import re
 import copy
 import pytest
@@ -51,12 +52,12 @@ def cheat(query_string, allowed_letters, words):
     return letter_filter(words_list, allowed_letters)
 
 
-def main():
+def one_at_a_time():
     words_string = load_words_string()
-    while(True):
+    while True:
         print("allowed_letters: ")
         allowed_letters = input()
-        while(True):
+        while True:
             print("query_string: ")
             query_string = input()
             if len(query_string) == 0:
@@ -64,6 +65,17 @@ def main():
             results = cheat(query_string, allowed_letters, words_string)
             print(results)
 
+def all_at_once():
+    words_string = load_words_string()
+    while True:
+        allowed_letters = input("allowed_letters: ")
+        for length in range(len(allowed_letters), 3, -1):
+            query_string = ' ' * length
+            results = cheat(query_string, allowed_letters, words_string)
+            print(results)
+        print()
+
 
 if __name__ == '__main__':
-    main()
+    # all_at_once()
+    one_at_a_time()
